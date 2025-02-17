@@ -4,7 +4,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: senha
+      POSTGRES_PASSWORD: loiola
       POSTGRES_DB: receitas-db
     ports:
       - "5432:5432"
@@ -15,4 +15,4 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: "postgresql://postgres:senha@db:5432/receitas-db?schema=public"
+      DATABASE_URL: "postgresql://postgres:loiola@db:5432/receitas-db?schema=public"

@@ -1,18 +1,39 @@
-import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
-import { findOne } from '../models/User';
-
-async function login(req, res) {
+export async function login(req, res) {
     const { email, password } = req.body;
-
-    const user = await findOne({ email });
-    if (!user) return res.status(400).send("Credenciais inválidas");
-
-    const isPasswordCorrect = await compare(password, user.password);
-    if (!isPasswordCorrect) return res.status(400).send("Credenciais inválidas");
-
-    const accessToken = sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    const refreshToken = sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
-
-    res.json({ accessToken, refreshToken });
-}
+  
+    try {
+      // Buscar o usuário pelo email
+      const user = await prisma.user.findUnique({
+        where: { email }
+      });
+  
+      if (!user) {
+        return res.status(400).json({ message: 'Usuário não encontrado!' });
+      }
+  
+      // Comparar a senha
+      const isMatch = await bcrypt.compare(password, user.password);
+  
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Senha incorreta!' });
+      }
+  
+      // Gerar o token JWT
+      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+  
+      // Enviar resposta com o token
+      res.json({
+        message: 'Login bem-sucedido!',
+        token,
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        }
+      });
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      res.status(500).json({ message: 'Erro interno ao fazer login' });
+    }
+  }
+  
