@@ -1,5 +1,7 @@
 import express from 'express';
-import usuarioRoutes from './prisma/src/routes/usuarioRoutes.js';  // Importando as rotas
+import usuarioRoutes from './prisma/src/routes/usuarioRoutes.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const port = 5000;
