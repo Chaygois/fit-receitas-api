@@ -1,16 +1,21 @@
 import express from 'express';
-import usuarioRoutes from './prisma/src/routes/usuarioRoutes.js';
 import dotenv from 'dotenv';
+import usuarioRoutes from './routes/usuarioRoutes.js';
+import favoritoRoutes from './routes/favoritoRoutes.js';
+import avaliacaoRoutes from './routes/avaliacaoRoutes.js';
+import verifyToken from './middleware/verifyToken';
+
 dotenv.config();
 
 const app = express();
 const port = 5000;
 
-// Middleware para parsear o corpo da requisição como JSON
-app.use(express.json());
+app.use(express.json());  // Middleware para parsear o corpo da requisição
 
-// Usando as rotas definidas em usuarioRoutes.js
-app.use('/api', usuarioRoutes);
+// Usando as rotas
+app.use('/api/usuarios', usuarioRoutes);  // Rotas de usuários
+app.use('/api/favoritos', favoritoRoutes);  // Rotas de favoritos
+app.use('/api/avaliacoes', avaliacaoRoutes);  // Rotas de avaliações
 
 // Iniciando o servidor
 app.listen(port, () => {
