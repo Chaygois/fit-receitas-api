@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400&display=swap" rel="stylesheet"> <!-- Fonte Cardo importada -->
+    <title>Receitas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: linear-gradient(180deg, #0097b2, #7ed957);            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .container {
+            width: 500%; /* Container ocupa 100% da largura */
+            max-width: 1000px; /* Tamanho máximo do container */
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 30px;
+            font-family: 'Cardo', serif;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            justify-content: center;
+            display: contents;
+            justify-items: center;
+            align-items: center;
+        }
+
+        input {
+            margin-bottom: 30px; /* Aumentei o espaço entre os inputs */
+            width: 100%; /* Input ocupa 100% da largura do container */
+            height: 70px;
+            padding: 20px;
+            font-size: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+            box-sizing: border-box; /* Garante que o padding e a borda não alterem a largura total */
+        }
+
+        input::placeholder {
+            color: #aaa;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        input:focus {
+            border-color: #2b9b0f; /* Foco verde moderno */
+        }
+
+        button {
+            width: 100%; /* O botão ocupa 100% da largura do container */
+            padding: 15px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #2b9b0f, #1e90ff); /* Gradiente verde para azul */
+            color: #000000;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+            border: none;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            background-color: #259b00; /* Tom de verde mais escuro */
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 10px 0;
+            color: #dadada;
+            background-color: #2b9b0f;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: #f4f4f4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Crie sua conta</h1>
+
+    <div class="container">
+        <form action="#" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Nome" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Senha" required>
+            </div>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 FlyFit Receitas. Todos os direitos reservados.</p>
+        <p><a href="#">Política de Privacidade</a></p>
+    </div>
+
+</body>
+</html>

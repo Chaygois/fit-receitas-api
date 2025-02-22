@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Receita</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Crie Sua Receita</h1>
+
+        <form id="createRecipeForm">
+            <!-- Campo do título -->
+            <label for="title">Título da Receita</label>
+            <input type="text" id="title" placeholder="Digite o título" required>
+
+            <!-- Botões de formatação -->
+            <label for="description">Descrição</label>
+            <div class="editor-toolbar">
+                <button type="button" id="bold-btn"><b>B</b></button>
+                <button type="button" id="italic-btn"><i>I</i></button>
+                <button type="button" id="underline-btn"><u>U</u></button>
+            </div>
+            <textarea id="description" placeholder="Descreva sua receita"></textarea>
+
+            <!-- Ingredientes e Instruções -->
+            <label for="ingredients">Ingredientes</label>
+            <textarea id="ingredients" placeholder="Lista de ingredientes" required></textarea>
+
+            <label for="instructions">Instruções</label>
+            <textarea id="instructions" placeholder="Passo a passo" required></textarea>
+
+            <!-- Tempo de preparo -->
+            <label for="prepTime">Tempo de Preparo (minutos)</label>
+            <input type="number" id="prepTime" placeholder="Ex: 30" required>
+
+            <!-- Categoria -->
+            <label for="category">Categoria</label>
+            <select id="category" required>
+                <option value="" disabled selected>Escolha uma categoria</option>
+                <option value="entrada">Entrada</option>
+                <option value="prato-principal">Prato Principal</option>
+                <option value="sobremesa">Sobremesa</option>
+            </select>
+
+            <!-- Botão de salvar -->
+            <button type="submit" class="btn-save">Salvar Receit

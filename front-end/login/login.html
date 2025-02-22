@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&display=swap" rel="stylesheet"> <!-- Fonte Cardo importada -->
+    <title>Faca seu Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%; /* Garantir que a altura da página ocupe 100% */
+            font-family: 'Cardo', serif; /* Aplicando a fonte Cardo */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Alinha o conteúdo do corpo no topo */
+            align-items: center; /* Centraliza o conteúdo horizontalmente */
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .container {
+            width: 800%;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+            margin-bottom: 80px;
+            display: flex;
+            flex-direction: column; /* Garante que os elementos internos do contêiner fiquem em coluna */
+            align-items: center; /* Alinha os itens no centro horizontalmente */
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color:#2b9b0f;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            background-color: #f8f8f8;
+            font-size: 1rem;
+            margin-top: 8px;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus {
+            background-color: #eafff0;
+            border-color: #0f6a5f; /* Adicionando borda com a cor do tema */
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            background-color:#2b9b0f;
+            color: #ffffff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 10px 0;
+            color: #fff;
+            position: absolute; /* Agora o rodapé será posicionado com relação ao corpo da página */
+            bottom: 0; /* Fixa o rodapé na parte inferior */
+            left: 0; /* Garante que o rodapé ocupe toda a largura da tela */
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Imagem de fundo centralizada */
+        .wallpaper {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%); /* Centraliza horizontal e verticalmente */
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+    width: 30%; /* Ajuste o tamanho da imagem conforme necessário */
+    max-width: 100px; /* Limita a largura da imagem */
+    border-radius: 12px; /* Bordas arredondadas */
+}
+        
+    </style>
+</head>
+<body>
+
+    <!-- Imagem de Wallpaper Centralizada -->
+    <img class="wallpaper" src="./imgs.jpg" alt="Wallpaper Salad">
+
+    <h1>FITFLY</h1>
+
+    <div class="container">
+        <h2>Faça seu Login </h2>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 FlyFit Receitas. Todos os direitos reservados.</p>
+        <p><a href="#">Política de Privacidade</a></p>
+    </div>
+
+</body>
+</html>

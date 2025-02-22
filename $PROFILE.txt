@@ -1,0 +1,1 @@
+$env:PATH = "$env:USERPROFILE\AppData\Roaming\fnm;$env:USERPROFILE\AppData\Roaming\fnm\node-versions\$(fnm current)\installation\bin;$env:PATH"

@@ -14,4 +14,52 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  receitas   Receita[]
+  favoritos  Favorito[]
+  avaliacoes Avaliacao[]
+}
+
+model Receita {
+  id          Int      @id @default(autoincrement())
+  titulo      String
+  descricao   String
+  ingredientes String
+  instrucoes  String
+  tempoPreparo Int
+  categoria   String
+  imagem      String? // URL da imagem
+  historico   Json? // Guarda versões anteriores
+  criadoEm    DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  usuarioId Int
+  usuario   User @relation(fields: [usuarioId], references: [id])
+
+  favoritos  Favorito[]
+  avaliacoes Avaliacao[]
+}
+
+model Favorito {
+  id        Int  @id @default(autoincrement())
+  usuarioId Int
+  receitaId Int
+
+  usuario User   @relation(fields: [usuarioId], references: [id])
+  receita Receita @relation(fields: [receitaId], references: [id])
+
+  @@unique([usuarioId, receitaId]) // Usuário não pode favoritar a mesma receita duas vezes
+}
+
+model Avaliacao {
+  id         Int      @id @default(autoincrement())
+  nota       Int
+  comentario String?
+  criadoEm   DateTime @default(now())
+
+  usuarioId Int
+  receitaId Int
+
+  usuario User   @relation(fields: [usuarioId], references: [id])
+  receita Receita @relation(fields: [receitaId], references: [id])
 }
