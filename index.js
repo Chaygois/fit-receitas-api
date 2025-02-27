@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import usuarioRoutes from '.prisma/server/routes/usuarioRoutes.js';
-import favoritoRoutes from '.prisma/server/routes/favoritoRoutes.js';
-import avaliacaoRoutes from '.prisma/server/routes/avaliacaoRoutes.js';
-
+import usuarioRoutes from './prisma/server/routes/usuarioRoutes.js';  // Corrigido caminho para importar com a extensão .js
+import favoritoRoutes from './prisma/server/routes/favoritoRoutes.js';  // Corrigido caminho para importar com a extensão .js
+import avaliacaoRoutes from './prisma/server/routes/avaliacaoRoutes.js';  // Corrigido caminho para importar com a extensão .js
+//import verifyToken from './prisma/server/middlewares/authMiddleware.js';
 
 dotenv.config();
 

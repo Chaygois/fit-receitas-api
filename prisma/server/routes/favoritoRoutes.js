@@ -1,6 +1,6 @@
-// favoritoRoutes.js
 import express from 'express';
-import verifyToken from '../middleware/verifyToken';  // Importe o middleware
+import verifyToken from '../middlewares/verifyToken';
+
 import { addFavorito, removeFavorito, getFavoritos } from '../controllers/favoritoController';
 
 const router = express.Router();

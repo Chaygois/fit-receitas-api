@@ -1,23 +1,19 @@
-import { verify } from 'jsonwebtoken';
+import jwt from "jsonwebtoken"; // Certifique-se de instalar: npm install jsonwebtoken
 
-function verifyToken(req, res, next) {
-    const token = req.headers['authorization'];
+export default function verifyToken(req, res, next) {
+    const authHeader = req.headers.authorization;
 
-    if (!token) {
-        return res.status(403).json({ message: "Token não fornecido" });
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "Acesso negado. Token não fornecido ou inválido." });
     }
 
-    // Remover o "Bearer" do token (caso seja passado assim)
-    const tokenWithoutBearer = token.startsWith("Bearer ") ? token.slice(7, token.length) : token;
+    const token = authHeader.split(" ")[1]; // Pega apenas o token, sem o "Bearer"
 
-    verify(tokenWithoutBearer, process.env.JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.status(403).json({ message: "Token inválido ou expirado" });
-        }
-
-        req.user = decoded;
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET); // Use sua chave secreta do .env
+        req.user = decoded; // O token deve conter informações do usuário
         next();
-    });
+    } catch (error) {
+        return res.status(403).json({ message: "Token inválido ou expirado." });
+    }
 }
-
-export default verifyToken;
