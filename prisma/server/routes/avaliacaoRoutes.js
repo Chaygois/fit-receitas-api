@@ -1,14 +1,17 @@
-// avaliacaoRoutes.js
 import express from 'express';
-import verifyToken from '../middleware/verifyToken';  // Importe o middleware
-import { addAvaliacao, getAvaliacoes } from '../controllers/avaliacaoController';
 
 const router = express.Router();
 
-// Proteger a rota de adição de avaliações
-router.post('/add', verifyToken, addAvaliacao);
+// Rota para adicionar avaliação
+router.post('/', (req, res) => {
+  // Lógica para adicionar avaliação
+  res.json({ message: 'Avaliação adicionada com sucesso!' });
+});
 
-// Rota para buscar avaliações (pode ser pública ou protegida, dependendo do seu caso)
-router.get('/', getAvaliacoes);
+// Rota para listar avaliações
+router.get('/', (req, res) => {
+  // Lógica para listar avaliações
+  res.json({ message: 'Lista de avaliações' });
+});
 
 export default router;

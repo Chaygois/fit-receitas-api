@@ -5,14 +5,14 @@ const router = express.Router();
 // Rota de registro
 router.post('/register', (req, res) => {
   const { email, password } = req.body;
-  // Aqui, você pode adicionar a lógica de registro no banco de dados
+  // Lógica de registro
   res.json({ message: 'Usuário registrado com sucesso!' });
 });
 
 // Rota de login
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
-  // Aqui, você pode adicionar a lógica de autenticação do usuário
+  // Lógica de autenticação
   res.json({ message: 'Usuário autenticado com sucesso!' });
 });
 

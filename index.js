@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import usuarioRoutes from './routes/usuarioRoutes.js';
-import favoritoRoutes from './routes/favoritoRoutes.js';
-import avaliacaoRoutes from './routes/avaliacaoRoutes.js';
-import verifyToken from './middleware/verifyToken';
+import usuarioRoutes from '.prisma/server/routes/usuarioRoutes.js';
+import favoritoRoutes from '.prisma/server/routes/favoritoRoutes.js';
+import avaliacaoRoutes from '.prisma/server/routes/avaliacaoRoutes.js';
+
 
 dotenv.config();
 
