@@ -1,13 +1,16 @@
 import { Router } from 'express';
-const router = Router();
 import { criarReceita, listarReceitas, buscarReceitaPorId } from '../services/receitaService';
+import verifyToken from '../middlewares/verifyToken';
 
-router.post('/', async (req, res) => {
+const router = Router();
+
+router.post('/', verifyToken, async (req, res) => {
     try {
         const receita = await criarReceita(req.body);
         res.status(201).json(receita);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao criar receita' });
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao criar receita', detalhes: error.message });
     }
 });
 
@@ -16,7 +19,8 @@ router.get('/', async (req, res) => {
         const receitas = await listarReceitas();
         res.json(receitas);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao listar receitas' });
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao listar receitas', detalhes: error.message });
     }
 });
 
@@ -26,7 +30,8 @@ router.get('/:id', async (req, res) => {
         if (!receita) return res.status(404).json({ error: 'Receita não encontrada' });
         res.json(receita);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar receita' });
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao buscar receita', detalhes: error.message });
     }
 });
 
