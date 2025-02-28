@@ -1,15 +1,10 @@
 import express from 'express';
-import verifyToken from '../middlewares/verifyToken';
-
-import { addFavorito, removeFavorito, getFavoritos } from '../controllers/favoritoController';
+import { addFavorito, removeFavorito, getFavoritos } from '../controllers/favoritoController.js';
 
 const router = express.Router();
 
-// Proteger a rota de adição e remoção de favoritos
-router.post('/add', verifyToken, addFavorito);
-router.delete('/remove/:id', verifyToken, removeFavorito);
-
-// Rota para buscar favoritos (não precisa de autenticação, caso queira permitir acesso público)
-router.get('/', getFavoritos);
+router.post('/favoritos', addFavorito);
+router.delete('/favoritos/:id', removeFavorito);
+router.get('/favoritos', getFavoritos);
 
 export default router;

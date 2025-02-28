@@ -1,15 +1,37 @@
-import { favorito } from '../prismaClient';
+// favoritoService.js
 
-async function favoritarReceita(usuarioId, receitaId) {
-    return await favorito.create({
-        data: { usuarioId, receitaId },
+// Supondo que você tenha um modelo Prisma chamado "Favorito"
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
+// Função para favoritar uma receita
+export const favoritarReceita = async (usuarioId, receitaId) => {
+    return await prisma.favorito.create({
+        data: {
+            usuarioId,
+            receitaId,
+        },
     });
-}
+};
 
-async function removerFavorito(usuarioId, receitaId) {
-    return await favorito.delete({
-        where: { usuarioId_receitaId: { usuarioId, receitaId } },
+// Função para remover um favorito
+export const removerFavorito = async (usuarioId, receitaId) => {
+    return await prisma.favorito.deleteMany({
+        where: {
+            usuarioId,
+            receitaId,
+        },
     });
-}
+};
 
-export default { favoritarReceita, removerFavorito };
+// Função para listar os favoritos de um usuário
+export const listarFavoritos = async (usuarioId) => {
+    return await prisma.favorito.findMany({
+        where: {
+            usuarioId,
+        },
+        include: {
+            receita: true, // Supondo que você tenha uma relação com a tabela de receitas
+        },
+    });
+};
