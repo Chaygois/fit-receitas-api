@@ -89,10 +89,16 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: "Senha incorreta!" });
     }
 
+    // Verificar se JWT_SECRET está definido
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET não está definido nas variáveis de ambiente');
+      return res.status(500).json({ message: "Erro de configuração do servidor" });
+    }
+
     // Gerar token JWT
     const token = jwt.sign(
       { userId: user.id },
-      process.env.JWT_SECRET || 'secreto',
+      process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );
 

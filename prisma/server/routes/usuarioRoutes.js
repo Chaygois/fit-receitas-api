@@ -9,11 +9,7 @@ router.post('/register', (req, res) => {
   res.json({ message: 'Usuário registrado com sucesso!' });
 });
 
-// Rota de login
-router.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  // Lógica de autenticação
-  res.json({ message: 'Usuário autenticado com sucesso!' });
-});
+// Nota: A rota de login foi movida para authRoutes.js
+// Não use esta rota para login, use /api/auth/login
 
 export default router;
